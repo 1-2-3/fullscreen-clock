@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clock</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width"
+    />
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
+  </head>
+  <body>
+    <div class="vue time-container">
+      <span>{{timeHour1img}}</span>
+      <div class="hline">&nbsp;</div>
+      <div class="time-content">
+        <div class="time-part">
+          <img :src="timeHour1img" />
+          <img v-if="timeHour2" :src="timeHour2img" />
+        </div>
+        <div class="time-part">
+          <img :src="timeMin1img" />
+          <img :src="timeMin2img" />
+        </div>
+      </div>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: document.querySelector(".vue"),
+        data: {
+          timeHour1: new Date().getHours().toString()[0],
+          timeHour2: new Date().getHours().toString()[1] || "",
+          timeMin1: new Date().getMinutes().toString().padStart(2, "0")[0],
+          timeMin2: new Date().getMinutes().toString().padStart(2, "0")[1],
+        },
+        computed: {
+          timeHour1img: function () {
+            return "static/" + this.timeHour1 + ".svg";
+          },
+          timeHour2img: function () {
+            return "static/" + this.timeHour2 + ".svg";
+          },
+          timeMin1img: function () {
+            return "static/" + this.timeMin1 + ".svg";
+          },
+          timeMin2img: function () {
+            return "static/" + this.timeMin2 + ".svg";
+          },
+        },
+      });
+
+      setInterval(() => {
+        vm.timeHour1 = new Date().getHours().toString()[0];
+        vm.timeHour2 = new Date().getHours().toString()[1] || "";
+        vm.timeMin1 = new Date().getMinutes().toString().padStart(2, "0")[0];
+        vm.timeMin2 = new Date().getMinutes().toString().padStart(2, "0")[1];
+      }, 10000);
+    </script>
+  </body>
+</html>

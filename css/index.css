@@ -1,0 +1,38 @@
+body {
+  margin: 0px;
+  background-color: black;
+}
+
+.time-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.time-content {
+  margin: 0 auto;
+  padding-left: 0vw;
+}
+
+.time-part {
+  display: inline-block;
+}
+
+.time-part > img {
+  width: 36vw;
+  margin-left: -10vw;
+}
+
+.time-part > img:not(:first-child) {
+  margin-left: -22vw;
+}
+
+.hline {
+  background-color: black;
+  width: 100vw;
+  height: 3px;
+  position: absolute;
+  margin-top: 2vh;
+}
